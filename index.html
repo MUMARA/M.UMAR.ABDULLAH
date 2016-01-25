@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>M.UMR TODO APP</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
+
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+    <script src="node_modules/angular-material-icons/angular-material-icons.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/angular-material-icons/angular-material-icons.css">
+    <script src="app.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+
+<md-toolbar layout="row" layout-align="center center">Material Todo App</md-toolbar>
+
+<form ng-submit="add();countTrue()" layout="row" layout-align="center start">
+
+    <md-input-container class="md-block"><label>Add todo item</label>
+        <input type="text" ng-model="text" size="105%">
+    </md-input-container>
+
+    <md-button class="md-fab md-warn" type="submit">
+        <ng-md-icon icon="add" size="24"></ng-md-icon>
+    </md-button>
+</form>
+
+
+<div layout="row" layout-align="end center">
+
+    {{count}} out of {{arr.length}} remaining {{arr.incomingText}}{{arr.check}}
+    <md-button class="md-accent" ng-click="del();countTrue()">[Archive]</md-button>
+    <span flex-offset-gt-sm="15"></span>
+</div>
+
+<span flex-offset-gt-sm="15">
+<md-checkbox type="checkbox" ng-repeat="item in arr" ng-model="item.check" ng-change="countTrue()" layout="column"
+             layout-align="start start">
+    {{item.incomingText}}
+</md-checkbox></span>
+
+
+</body>
+</html>
